@@ -12,7 +12,7 @@ y = []
 
 #write temp to file
 def writeTemp(temp):
-    with open("home/pi/cpu_temp.csv", "a") as log:
+    with open("/home/pi/cpu_temp.csv", "a") as log:
         log.write("{},{}\n".format(strftime("%Y-%m-%d %H:%M:%S"),str(temp)))
 
 #draw a graph of the data
