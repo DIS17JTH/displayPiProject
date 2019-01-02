@@ -2,6 +2,7 @@
 
 from time import sleep, strftime, time
 import matplotlib.pyplot as plt
+import numpy as np
 
 plt.ion()
 x = [i for i in range(20, 100, 3)]
@@ -11,15 +12,13 @@ y = [i for i in range(len(x))]
 
 
 def graph():
-    plt.clf()
-    plt.scatter(x, y)
+    # plt.clf()
+    #plt.scatter(x, y)
     plt.plot(x, y)
-    plt.draw()
+    # plt.draw()
 
 
 while True:
-    plt.clf()
-    plt.scatter(x, y)
-    plt.plot(x, y)
-    plt.draw()
+    graph()
+    plt.show()
     sleep(1)
