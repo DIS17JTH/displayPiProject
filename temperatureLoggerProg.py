@@ -23,8 +23,8 @@ def graph(temp):
     y.append(temp)
     x.append(time())
     plt.clf()
-    plt.scatter(testX,testY)
-    plt.plot(testX,testY)
+    plt.scatter(x,y)
+    plt.plot(x,y)
     plt.draw()
 
 
