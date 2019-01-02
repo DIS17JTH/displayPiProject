@@ -1,21 +1,25 @@
 #! /usr/bin/python3
 
-from time import sleep, strftime, time
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
+from time import sleep, strftime, time
+# import matplotlib as mplib
+# matplotlib.use('PS')
+# mplib.use('WXAgg')
 
-plt.ion()
 x = [i for i in range(20, 100, 3)]
 y = [i for i in range(len(x))]
 
-# draw a graph with data
+plt.ion()
+plt.title("interactive test")
+plt.xlabel("index")
 
 
-def graph():
-    # plt.clf()
-    #plt.scatter(x, y)
+def graph():  # draw a graph with data
+    plt.clf()
+    plt.scatter(x, y)
     plt.plot(x, y)
-    # plt.draw()
+    plt.draw()
 
 
 while True:
