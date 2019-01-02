@@ -10,6 +10,9 @@ plt.ion()
 x = []
 y = []
 
+testX = [i for i in range(20,100,3)]
+testY = [i for i in range(len(testX))]
+
 #write temp to file
 def writeTemp(temp):
     with open("/home/pi/cpu_temp.csv", "a") as log:
@@ -20,8 +23,8 @@ def graph(temp):
     y.append(temp)
     x.append(time())
     plt.clf()
-    plt.scatter(x,y)
-    plt.plot(x,y)
+    plt.scatter(testX,testY)
+    plt.plot(testX,testY)
     plt.draw()
 
 
