@@ -26,5 +26,5 @@ def graph(temp):
 while True:
     temp = cpu.temperature
     write_temp(temp)
-#    graph(temp)
+    graph(temp)
     sleep(1)
