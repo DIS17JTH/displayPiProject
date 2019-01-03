@@ -1,10 +1,11 @@
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib import style
+import itertools
 
 style.use('fivethirtyeight')
 
-fig = plt.figure()
+fig = plt.figure(1, (10, 10))
 ax1 = fig.add_subplot(1, 1, 1)
 
 
@@ -18,11 +19,12 @@ def animate(i):
             x, y = line.split(',')
             xs.append(x)
             ys.append(y)
-    # ax1.clear()
-    plt.clf()
-    plt.scatter(xs, ys)
-    plt.plot(xs, ys)
+    ax1.clear()
+    # plt.clf()
+    xs, ys = zip(*sorted(zip(xs, ys)))
+    ax1.scatter(xs, ys)
+    ax1.plot(xs, ys)
 
 
-ani = animation.FuncAnimation(fig, animate, interval=1000)
+ani = animation.FuncAnimation(fig, animate, interval=10000)
 plt.show()
