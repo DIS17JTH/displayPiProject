@@ -1,0 +1,12 @@
+-Start pi project
+-using: python3
+-goal: GUI with som live data
+-start:2018-12-28
+
+-PROGRESS:
+    2018-12-29
+        -graphProgram that don't display data but saves temp to file : temperatureLoggerProg.py
+    2019-01-03
+        -over all project organizing
+        -live graph program, reads from file
+        -test on pi

@@ -6,30 +6,27 @@ import matplotlib.pyplot as plt
 
 cpu = CPUTemperature()
 
-plt.ion()
+# plt.ion() -> BUG
 x = []
 y = []
 
-testX = [i for i in range(20,100,3)]
-testY = [i for i in range(len(testX))]
 
-#write temp to file
-def writeTemp(temp):
-    with open("/home/pi/cpu_temp.csv", "a") as log:
-        log.write("{},{}\n".format(strftime("%Y-%m-%d %H:%M:%S"),str(temp)))
+def writeTemp(temp):  # write temp to file
+    with open("/home/pi/projectScreen/cpu_temp.csv", "a") as log:
+        log.write("{},{}\n".format(strftime("%Y-%m-%d %H:%M:%S"), str(temp)))
 
-#draw a graph of the data
-def graph(temp):
+
+def graph(temp):  # draw a graph of the data ->not working
     y.append(temp)
     x.append(time())
     plt.clf()
-    plt.scatter(x,y)
-    plt.plot(x,y)
+    plt.scatter(x, y)
+    plt.plot(x, y)
     plt.draw()
 
 
 while True:
     temp = cpu.temperature
     writeTemp(temp)
-    graph(temp)
+    # graph(temp)
     sleep(1)
