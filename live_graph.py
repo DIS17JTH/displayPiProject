@@ -9,7 +9,7 @@ ax1 = fig.add_subplot(1, 1, 1)
 
 
 def animate(i):
-    graph_data = open('logg.txt', 'r').read()
+    graph_data = open('test.csv', 'r').read()
     lines = graph_data.split('\n')
     xs = []
     ys = []
