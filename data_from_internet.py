@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import urllib
 import matplotlib.dates as mdates
+from datetime import date
 
 
 def bytespdate2num(fmt, encoding='utf-8'):
@@ -17,6 +18,8 @@ def graph_data(stock):
     stock_price_url = 'https://pythonprogramming.net/yahoo_finance_replacement'
     source_code = urllib.request.urlopen(
         stock_price_url).read().decode('utf-8')
+    source_code = urllib.request.urlopen(
+        stock_price_url).read().decode('utf-8')
 
     stock_data = []
     split_source = source_code.split('\n')
@@ -30,10 +33,11 @@ def graph_data(stock):
     # %Y = full year 2019
     # %y = partial year 19
     # %m =
-    date, openp, highp, lowp, closep, adjusted_closep, volume = np.loadtxt(
-        stock_data, delimiter=',', unpack=True, converters={0: bytespdate2num('%Y-%m-%d')})
 
-    plt.plot_date(date, closep)
+    date, openp, highp, lowp, closep, adjusted_closep, volume = np.loadtxt(
+        stock_data, delimiter=',', unpack=True, converters={0: bytespdate2num('%Y-%m-%d')})  # converters={0: lambda s: mdates.date2num(date.strptime(s.decode("utf -8"), '%Y-%m-%d'))}
+
+    plt.plot_date(date, closep, '-', label='Price')
 
     plt.xlabel('Date')
     plt.ylabel('Price')
