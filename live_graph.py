@@ -9,7 +9,7 @@ ax1 = fig.add_subplot(1, 1, 1)
 
 
 def animate(i):
-    graph_data = open('test.csv', 'r').read()
+    graph_data = open('cpu_temp.csv', 'r').read()
     lines = graph_data.split('\n')
     xs = []
     ys = []
@@ -18,8 +18,10 @@ def animate(i):
             x, y = line.split(',')
             xs.append(x)
             ys.append(y)
-    ax1.clear()
-    ax1.plot(xs, ys)
+    # ax1.clear()
+    plt.clf()
+    plt.scatter(xs, ys)
+    plt.plot(xs, ys)
 
 
 ani = animation.FuncAnimation(fig, animate, interval=1000)
