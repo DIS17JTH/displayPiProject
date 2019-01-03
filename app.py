@@ -153,3 +153,21 @@ if 18 <= age < 65:
 # message_2 = age >= 18 ? "Eligible": "Not Eligible"
 message = "Eligible" if age >= 18 else "Not Eligible"
 print(message)
+
+# loops
+for g in "Python":
+    print(g)
+
+for h in ['a', 'b', 'c']:
+    print(h)
+
+for j in range(5):
+    print(j)
+
+for k in range(0, 10, 2):
+    print(k)
+
+# shortcuts
+#shift+ alt + down
+# alt+down
+# ctrl+home/end
