@@ -1,4 +1,13 @@
 import sys
-import PyQt5 import QtGui
+from PyQt5.QtWidgets import QApplication, QWidget
 
-app = QtGui.QApplication(sys.argv)
+
+def app():
+    my_app = QApplication(sys.argv)
+    w = QWidget()
+    w.setWindowTitle("Weather and time")
+    w.show()
+    sys.exit(my_app.exec_())
+
+
+app()
