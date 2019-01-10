@@ -6,6 +6,8 @@ from PyQt5.QtWidgets import (QWidget, QToolTip,
 from PyQt5.QtGui import QFont
 from PyQt5.QtGui import QIcon
 
+from PyQt5.QtCore import QPropertyAnimation
+
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
@@ -15,6 +17,9 @@ from matplotlib import style
 import itertools
 
 import numpy as np
+
+import time
+live_graph = 0
 
 
 class Window(QWidget):
@@ -33,9 +38,13 @@ class Window(QWidget):
         self.initUI()
 
     def initUI(self):
-        canvas = LiveGraph(self, width=8, height=4)
-        canvas.move(0, 0)
-        # plt.show()
+        global live_graph
+        live_graph = LiveGraph(self, width=8, height=4)
+        live_graph.move(0, 0)
+
+        # ani = animation.FuncAnimation(
+        #    fig, live_graph.animate(), interval=10000)
+        # live_graph.animate()
 
         self.button(x=500, y=350)
         self.exit_button(x=700, y=350)
@@ -70,6 +79,7 @@ class Window(QWidget):
         print(int(buttonReply))
         if buttonReply == QMessageBox.Yes:
             print('Yes clicked.')
+            live_graph.animate()
         if buttonReply == QMessageBox.No:
             print('No clicked.')
         if buttonReply == QMessageBox.Cancel:
@@ -103,12 +113,13 @@ class LiveGraph(FigureCanvas):
 
         #fig = plt.figure(1, (10, 10))
         #ax1 = fig.add_subplot(1, 1, 1)
-        #ani = animation.FuncAnimation(fig, self.plot, interval=10000)
-        ani = animation.FuncAnimation(fig, self.animate(), interval=10000)
+        #ani = animation.FuncAnimation(fig, self.animate(), interval=10000)
+        self.animate()
         plt.show()
         # self.animate()
 
     def animate(self):
+        print("animating")
         graph_data = open('cpu_temp.csv', 'r').read()
         lines = graph_data.split('\n')
         xs = []
@@ -118,10 +129,9 @@ class LiveGraph(FigureCanvas):
                 x, y = line.split(',')
                 xs.append(x)
                 ys.append(float(y))
-        # self.clear()
-        #xs, ys = zip(*sorted(zip(xs, ys)))
         # self.scatter(xs, ys)
         self.plotGraph(xs, ys)
+        plt.show()
 
     def plotGraph(self, xs, ys: float):
         #labels = ["One", "Two", "Three"]
@@ -134,6 +144,9 @@ class LiveGraph(FigureCanvas):
 if __name__ == '__main__':
     my_app = QApplication(sys.argv)
     window = Window()
+    # plt.show()
+    print("Main")
+    # live_graph.animate()
     # window.setToolTip('test')
     sys.exit(my_app.exec_())
 
