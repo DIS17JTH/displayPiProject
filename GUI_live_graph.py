@@ -20,6 +20,7 @@ import numpy as np
 
 import time
 live_graph = 0
+fig = 0
 
 
 class Window(QWidget):
@@ -42,8 +43,8 @@ class Window(QWidget):
         live_graph = LiveGraph(self, width=8, height=4)
         live_graph.move(0, 0)
 
-        # ani = animation.FuncAnimation(
-        #    fig, live_graph.animate(), interval=10000)
+        ani = animation.FuncAnimation(
+            fig, live_graph.animate(), interval=10000)
         # live_graph.animate()
 
         self.button(x=500, y=350)
@@ -105,6 +106,7 @@ class Canvas(FigureCanvas):
 
 class LiveGraph(FigureCanvas):
     def __init__(self, parent=None, width=5, height=5, dpi=100):
+        global fig
         fig = Figure(figsize=(width, height), dpi=dpi)
         self.axes = fig.add_subplot(111)
 
