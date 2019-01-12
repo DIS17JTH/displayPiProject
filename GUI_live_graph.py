@@ -43,9 +43,7 @@ class Window(QWidget):
         live_graph = LiveGraph(self, width=8, height=4)
         live_graph.move(0, 0)
 
-        ani = animation.FuncAnimation(
-            fig, live_graph.animate(), interval=10000)
-        # live_graph.animate()
+        live_graph.animate()
 
         self.button(x=500, y=350)
         self.exit_button(x=700, y=350)
@@ -80,7 +78,7 @@ class Window(QWidget):
         print(int(buttonReply))
         if buttonReply == QMessageBox.Yes:
             print('Yes clicked.')
-            live_graph.animate()
+            # live_graph.animate()
         if buttonReply == QMessageBox.No:
             print('No clicked.')
         if buttonReply == QMessageBox.Cancel:
@@ -115,8 +113,8 @@ class LiveGraph(FigureCanvas):
 
         #fig = plt.figure(1, (10, 10))
         #ax1 = fig.add_subplot(1, 1, 1)
-        #ani = animation.FuncAnimation(fig, self.animate(), interval=10000)
-        self.animate()
+        ani = animation.FuncAnimation(fig, self.animate(), interval=10000)
+        # self.animate()
         plt.show()
         # self.animate()
 
@@ -150,6 +148,8 @@ if __name__ == '__main__':
     print("Main")
     # live_graph.animate()
     # window.setToolTip('test')
+    #ani = animation.FuncAnimation(fig, live_graph.animate(), interval=10000)
+    # plt.show()
     sys.exit(my_app.exec_())
 
 
