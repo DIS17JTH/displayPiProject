@@ -18,10 +18,10 @@ def animate(i):
         if len(line) > 1:
             x, y = line.split(',')
             xs.append(x)
-            ys.append(y)
+            ys.append(float(y))
     ax1.clear()
     # plt.clf()
-    xs, ys = zip(*sorted(zip(xs, ys)))
+    # xs, ys = zip(*sorted(zip(xs, ys)))
     ax1.scatter(xs, ys)
     ax1.plot(xs, ys)
 
